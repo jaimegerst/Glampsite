@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, FlatList } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
-import { PACKAGES } from '../shared/packages';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+        packages: state.packages 
+    };
+};
 
 function Mission() {
     return (
         <Card title="Our Mission">
             <Text>
-                We present a curated database of the best campsites in the vast woods and backcountry of the World Wide Web Wilderness. We increase access to adventure for the public while promoting safe and respectful use of resources. The expert wilderness trekkers on our staff personally verify each campsite to make sure that they are up to our standards. We also present a platform for campers to share reviews on campsites they have visited with each other.
+                Glampsite is an industry-leading glamorous camping website. We strive to offer glampsites across the nation to our adventure-seeking family. Our staff prepares the sites for your visit and offers a 24/7 service line shall you need it. We promote safe and modern campsites to offer an alternative to your typical tent weekend. You can expect a comfortable bed, kitchenette, restroom, and a gorgeous view. Why camp when you can glamp?
             </Text>
         </Card>
     );
 }
 
 class About extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            packages: PACKAGES
-        };
-    }
 
     static navigationOptions = {
         title: 'About Us'
@@ -32,7 +32,7 @@ class About extends Component {
                 <ListItem
                     title={item.name}
                     subtitle={item.description}
-                    leftAvatar={{ source: require('./images/bootstrap-logo.png')}}
+                    leftAvatar={{source: {uri: baseUrl + item.image}}}
                 />
             );
         };
@@ -41,8 +41,8 @@ class About extends Component {
             <ScrollView>
                 <Mission />
                 <Card title="Packages">
-                    <FlatList
-                        data={this.state.packages}
+                    <FlatList 
+                        data={this.props.packages.packages}
                         renderItem={renderPackages}
                         keyExtractor={item => item.id.toString()}
                     />
@@ -52,4 +52,4 @@ class About extends Component {
     }
 }
 
-export default About;
+export default connect(mapStateToProps)(About);

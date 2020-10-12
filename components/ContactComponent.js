@@ -11,23 +11,32 @@ class Contact extends Component {
     render() {
        return (
             <ScrollView>
+                 <Card 
+                title= {'24/7 Hotline'}>
+                <Text wrapperStyle= {{margin: 20}}>
+                    Emergencies: 911
+                </Text>
+                <Text style= {{marginBottom: 10}}> 
+                    Other Inquiries: 927-555-2287
+                </Text>
+                </Card>
                 <Card
                     title= {'Contact Information'}>
                     <Text 
                     wrapperStyle= {{margin: 20}}>
-                    1 Nucamp Way
+                        6907 Modern Way
                     </Text>
                     <Text> 
-                        Seattle, WA 98001
+                        Charlotte, NC 28217
                     </Text>
                     <Text style= {{marginBottom: 10}}>
                         U.S.A.
                     </Text>
                     <Text> 
-                        Phone: 1-206-555-1234
+                        Phone: 1-412-526-9465
                     </Text>
                     <Text> 
-                        Email: campsites@nucamp.co
+                        Email: glampsite@gmail.com
                     </Text>
                 </Card>
             </ScrollView>

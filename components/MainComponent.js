@@ -10,6 +10,16 @@ import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import { createAppContainer } from 'react-navigation';
 import { Icon } from 'react-native-elements';
 import SafeAreaView from 'react-native-safe-area-view';
+import { connect } from 'react-redux';
+import { fetchCampsites, fetchComments, fetchPromotions,
+    fetchPackages } from '../redux/ActionCreators';
+
+const mapDispatchToProps = {
+    fetchCampsites,
+    fetchComments,
+    fetchPromotions,
+    fetchPackages
+};
 
 const DirectoryNavigator = createStackNavigator(
     {
@@ -30,7 +40,7 @@ const DirectoryNavigator = createStackNavigator(
         initialRouteName: 'Directory',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#77c681'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -47,7 +57,7 @@ const HomeNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#77c681'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -70,7 +80,7 @@ const AboutNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#77c681'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -93,7 +103,7 @@ const ContactNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#77c681'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
@@ -119,7 +129,7 @@ const CustomDrawerContentComponent = props => (
                     <Image source={require('./images/logo.png')} style={styles.drawerImage} />
                 </View>
                 <View style={{flex: 2}}>
-                    <Text style={styles.drawerHeaderText}>NuCamp</Text>
+                    <Text style={styles.drawerHeaderText}>Glampsite</Text>
                 </View>
             </View>
             <DrawerItems {...props} />
@@ -185,7 +195,7 @@ const MainNavigator = createDrawerNavigator(
         }
     },
     {
-        drawerBackgroundColor: '#CEC8FF',
+        drawerBackgroundColor: '#def2e1',
         contentComponent: CustomDrawerContentComponent
     }
 );
@@ -193,6 +203,14 @@ const MainNavigator = createDrawerNavigator(
 const AppNavigator = createAppContainer(MainNavigator)
 
 class Main extends Component {
+
+    componentDidMount() {
+        this.props.fetchCampsites();
+        this.props.fetchComments();
+        this.props.fetchPromotions();
+        this.props.fetchPackages();
+    }
+
     render() {
         return (
             <View style={{
@@ -210,7 +228,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: '#5637DD',
+        backgroundColor: '#77c681',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -234,4 +252,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);
