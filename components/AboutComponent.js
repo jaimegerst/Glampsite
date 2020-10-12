@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, FlatList } from 'react-native';
 import { Card, ListItem } from 'react-native-elements';
-import { PARTNERS } from '../shared/partners';
+import { PACKAGES } from '../shared/packages';
 
 function Mission() {
     return (
@@ -18,7 +18,7 @@ class About extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            partners: PARTNERS
+            packages: PACKAGES
         };
     }
 
@@ -27,7 +27,7 @@ class About extends Component {
     }
 
     render() {
-        const renderPartner = ({item}) => {
+        const renderPackages = ({item}) => {
             return (
                 <ListItem
                     title={item.name}
@@ -40,10 +40,10 @@ class About extends Component {
        return (
             <ScrollView>
                 <Mission />
-                <Card title="Community Partners">
+                <Card title="Packages">
                     <FlatList
-                        data={this.state.partners}
-                        renderItem={renderPartner}
+                        data={this.state.packages}
+                        renderItem={renderPackages}
                         keyExtractor={item => item.id.toString()}
                     />
                 </Card>
