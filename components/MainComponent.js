@@ -238,7 +238,8 @@ const styles = StyleSheet.create({
     drawerHeaderText: {
         color: '#fff',
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold', 
+        fontFamily: 'Chilanka-Regular'
     },
     drawerImage: {
         margin: 10,
