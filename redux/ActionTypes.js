@@ -14,3 +14,5 @@ export const ADD_PACKAGES = 'ADD_PACKAGES';
 export const PACKAGES_FAILED = 'PACKAGES_FAILED';
 
 export const ADD_FAVORITE = 'ADD_FAVORITE';
+
+export const DELETE_FAVORITE = 'DELETE_FAVORITE'; 
